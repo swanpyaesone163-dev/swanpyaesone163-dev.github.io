@@ -1160,6 +1160,7 @@ color: white;
 
   // ── TIMELINE EXPAND / COLLAPSE ──
 // ── TIMELINE ACCORDION ──
+// ── TIMELINE ACCORDION (OPEN + CLOSE) ──
 (function(){
 
   const rows = document.querySelectorAll('.itl-row');
@@ -1168,13 +1169,17 @@ color: white;
 
     row.addEventListener('click', function(){
 
+      const isOpen = row.classList.contains('open');
+
       // close all rows
       rows.forEach(function(r){
         r.classList.remove('open');
       });
 
-      // open the clicked one
-      row.classList.add('open');
+      // reopen only if it wasn't already open
+      if(!isOpen){
+        row.classList.add('open');
+      }
 
     });
 
