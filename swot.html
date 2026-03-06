@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWOT Analysis — ReVitalize Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:   #1a3d20;
+    --moss:     #2e6b38;
+    --fern:     #4a9455;
+    --sage:     #8ab88f;
+    --mist:     #d6e9d8;
+    --cream:    #f7f4ee;
+    --parch:    #ede9e0;
+    --ink:      #0f1a0f;
+    --s-green:  #1b5e20;
+    --w-amber:  #7a3b00;
+    --o-blue:   #0d47a1;
+    --t-rose:   #7b0033;
+    --s-bg:     #e8f5e9;
+    --w-bg:     #fff8e1;
+    --o-bg:     #e3f2fd;
+    --t-bg:     #fce4ec;
+    --s-border: #4caf50;
+    --w-border: #ff9800;
+    --o-border: #1976d2;
+    --t-border: #c2185b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Header ─────────────────────────────────────────────────────── */
+  header {
+    background: var(--forest);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: 'SWOT';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(90px, 17vw, 210px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -4px;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 52px 40px 44px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: white; }
+  .back-link svg { width: 14px; height: 14px; }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 3px;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4.5vw, 50px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: white;
+    max-width: 580px;
+  }
+  header h1 em { font-style: italic; color: var(--sage); }
+
+  .header-subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    max-width: 460px;
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ── Summary strip ──────────────────────────────────────────────── */
+  .summary-strip {
+    background: var(--parch);
+    border-bottom: 3px solid var(--forest);
+  }
+
+  .summary-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .summary-cell {
+    padding: 22px 20px;
+    border-right: 1px solid #d0c8b8;
+  }
+  .summary-cell:last-child { border-right: none; }
+
+  .summary-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .summary-count {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+  }
+
+  .summary-cell.s .summary-label,
+  .summary-cell.s .summary-count { color: var(--s-green); }
+  .summary-cell.w .summary-label,
+  .summary-cell.w .summary-count { color: var(--w-amber); }
+  .summary-cell.o .summary-label,
+  .summary-cell.o .summary-count { color: var(--o-blue); }
+  .summary-cell.t .summary-label,
+  .summary-cell.t .summary-count { color: var(--t-rose); }
+
+  /* ── Main ───────────────────────────────────────────────────────── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+  }
+
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+  }
+
+  /* ── Quadrant ───────────────────────────────────────────────────── */
+  .quadrant {
+    background: white;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s;
+  }
+  .quadrant.visible { opacity: 1; transform: translateY(0); }
+  .quadrant:hover { box-shadow: 0 8px 36px rgba(0,0,0,0.12); }
+  .quadrant:nth-child(2) { transition-delay: 0.08s; }
+  .quadrant:nth-child(3) { transition-delay: 0.15s; }
+  .quadrant:nth-child(4) { transition-delay: 0.22s; }
+
+  .q-header {
+    padding: 22px 28px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .q-header::after {
+    content: attr(data-letter);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 900;
+    opacity: 0.10;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .q-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .q-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+    display: block;
+  }
+  .q-desc {
+    font-size: 12.5px;
+    font-style: italic;
+    margin-top: 4px;
+    opacity: 0.72;
+    font-weight: 300;
+    display: block;
+  }
+
+  .quadrant.strengths    .q-header { background: var(--s-bg); color: var(--s-green); border-top: 4px solid var(--s-border); }
+  .quadrant.weaknesses   .q-header { background: var(--w-bg); color: var(--w-amber); border-top: 4px solid var(--w-border); }
+  .quadrant.opportunities .q-header { background: var(--o-bg); color: var(--o-blue); border-top: 4px solid var(--o-border); }
+  .quadrant.threats      .q-header { background: var(--t-bg); color: var(--t-rose); border-top: 4px solid var(--t-border); }
+
+  .q-items { padding: 4px 0 16px; }
+
+  .q-item {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 0 10px;
+    padding: 13px 28px;
+    border-bottom: 1px solid #f2f0eb;
+    transition: background 0.16s, border-left 0.16s, padding-left 0.16s;
+    cursor: default;
+  }
+  .q-item:last-child { border-bottom: none; }
+  .q-item:hover { background: #fafaf7; }
+
+  .quadrant.strengths    .q-item:hover { border-left: 3px solid var(--s-border); padding-left: 25px; }
+  .quadrant.weaknesses   .q-item:hover { border-left: 3px solid var(--w-border); padding-left: 25px; }
+  .quadrant.opportunities .q-item:hover { border-left: 3px solid var(--o-border); padding-left: 25px; }
+  .quadrant.threats      .q-item:hover { border-left: 3px solid var(--t-border); padding-left: 25px; }
+
+  .q-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    padding-top: 3px;
+    user-select: none;
+  }
+  .q-text strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+  }
+  .q-text span {
+    font-size: 13px;
+    color: #5a5a5a;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── Strategic note ──────────────────────────────────────────────── */
+  .strategic-note {
+    margin-top: 36px;
+    background: var(--forest);
+    color: white;
+    border-radius: 3px;
+    padding: 34px 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.28s, transform 0.5s ease 0.28s;
+  }
+  .strategic-note.visible { opacity: 1; transform: translateY(0); }
+
+  .strategic-note h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 22px;
+  }
+
+  .strat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 36px;
+  }
+
+  .strat-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .strat-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    padding: 3px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .strat-tag.so { background: rgba(76,175,80,0.25);  color: #a5d6a7; }
+  .strat-tag.wt { background: rgba(255,152,0,0.20);  color: #ffcc80; }
+  .strat-tag.st { background: rgba(25,118,210,0.22); color: #90caf9; }
+  .strat-tag.ow { background: rgba(194,24,91,0.20);  color: #f48fb1; }
+
+  .strat-text {
+    font-size: 13px;
+    line-height: 1.52;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+  }
+
+  /* ── Footer ──────────────────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.38);
+    text-align: center;
+    padding: 22px 40px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+  footer a { color: var(--sage); text-decoration: none; }
+  footer a:hover { color: white; }
+
+  /* ── Responsive ──────────────────────────────────────────────────── */
+  @media (max-width: 780px) {
+    .swot-grid { grid-template-columns: 1fr; }
+    .summary-inner { grid-template-columns: 1fr 1fr; }
+    .summary-cell:nth-child(2) { border-right: none; }
+    .strat-grid { grid-template-columns: 1fr; }
+    .header-inner, main { padding-left: 20px; padding-right: 20px; }
+    .summary-inner { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10 3L5 8l5 5"/>
+      </svg>
+      Back to Proposal
+    </a>
+    <div class="header-eyebrow">ReVitalize Collective · Strategic Analysis</div>
+    <h1>SWOT Analysis<br><em>Waste-to-Development Model</em></h1>
+    <p class="header-subtitle">A candid assessment of the model's internal capabilities and external environment — built to inform decision-making, not to impress funders.</p>
+  </div>
+</header>
+
+<div class="summary-strip">
+  <div class="summary-inner">
+    <div class="summary-cell s">
+      <span class="summary-label">Strengths</span>
+      <span class="summary-count">7</span>
+    </div>
+    <div class="summary-cell w">
+      <span class="summary-label">Weaknesses</span>
+      <span class="summary-count">6</span>
+    </div>
+    <div class="summary-cell o">
+      <span class="summary-label">Opportunities</span>
+      <span class="summary-count">7</span>
+    </div>
+    <div class="summary-cell t">
+      <span class="summary-label">Threats</span>
+      <span class="summary-count">6</span>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="swot-grid">
+
+    <!-- STRENGTHS -->
+    <div class="quadrant strengths">
+      <div class="q-header" data-letter="S">
+        <span class="q-label">Internal · Positive</span>
+        <span class="q-title">Strengths</span>
+        <span class="q-desc">What the model does well by design</span>
+      </div>
+      <div class="q-items">
+        <div class="q-item"><span class="q-num">01</span><div class="q-text"><strong>Self-reinforcing circular architecture</strong><span>Each phase generates the inputs the next phase needs, eliminating perpetual dependency on external funding that collapses most NGO models.</span></div></div>
+        <div class="q-item"><span class="q-num">02</span><div class="q-text"><strong>Eight diversified revenue streams</strong><span>Compost, biogas, recyclables, user fees, tipping fees, CBG, carbon credits, and EPR fees — no single source can destabilise the model.</span></div></div>
+        <div class="q-item"><span class="q-num">03</span><div class="q-text"><strong>Waste picker formalisation</strong><span>Existing informal workers are integrated as paid coordinators — using community knowledge already present rather than importing outside labour.</span></div></div>
+        <div class="q-item"><span class="q-num">04</span><div class="q-text"><strong>Government scheme convergence</strong><span>PMKVY, IREDA, GOBARdhan, Jan Dhan, Ayushman Bharat — phases activate existing entitlements rather than building parallel systems.</span></div></div>
+        <div class="q-item"><span class="q-num">05</span><div class="q-text"><strong>KPI-gated phase progression</strong><span>Each phase only begins when the previous meets measurable thresholds. Prevents premature scaling before foundations are stable.</span></div></div>
+        <div class="q-item"><span class="q-num">06</span><div class="q-text"><strong>Community ownership transfer</strong><span>Governance progressively shifts to trained community members, making the founding NGO's eventual exit a success metric, not a failure.</span></div></div>
+        <div class="q-item"><span class="q-num">07</span><div class="q-text"><strong>Academic M&amp;E independence</strong><span>J-PAL, 3ie, and IIM partnerships ensure impact data is independently verified — critical for credibility with government and institutional funders.</span></div></div>
+      </div>
+    </div>
+
+    <!-- WEAKNESSES -->
+    <div class="quadrant weaknesses">
+      <div class="q-header" data-letter="W">
+        <span class="q-label">Internal · Negative</span>
+        <span class="q-title">Weaknesses</span>
+        <span class="q-desc">Honest constraints within our control</span>
+      </div>
+      <div class="q-items">
+        <div class="q-item"><span class="q-num">01</span><div class="q-text"><strong>Long ramp to break-even</strong><span>Phase I requires 12–18 months before reaching operational self-sufficiency, demanding sustained bridge funding and patient capital at the outset.</span></div></div>
+        <div class="q-item"><span class="q-num">02</span><div class="q-text"><strong>High Phase I capital requirement</strong><span>Biogas digesters, collection infrastructure, and bin distribution require ₹12–24L upfront — a significant barrier without IREDA financing confirmed early.</span></div></div>
+        <div class="q-item"><span class="q-num">03</span><div class="q-text"><strong>Requires multi-sector coordination</strong><span>Simultaneous engagement with municipal bodies, schools, government offices, and recyclers creates significant coordination overhead at launch.</span></div></div>
+        <div class="q-item"><span class="q-num">04</span><div class="q-text"><strong>Behaviour change is inherently slow</strong><span>Household waste segregation and adult welfare participation depend on sustained community trust — results may lag behind projected timelines.</span></div></div>
+        <div class="q-item"><span class="q-num">05</span><div class="q-text"><strong>Limited Phase III scalability per batch</strong><span>Batch sizes of 30–50 adults are appropriate for quality but slow to cover large communities. Replication requires training facilitators at pace.</span></div></div>
+        <div class="q-item"><span class="q-num">06</span><div class="q-text"><strong>Technical skill dependency</strong><span>Biogas plant operation and compost management require trained technicians. Staff attrition in Phase IV could disrupt operations if succession is not built in.</span></div></div>
+      </div>
+    </div>
+
+    <!-- OPPORTUNITIES -->
+    <div class="quadrant opportunities">
+      <div class="q-header" data-letter="O">
+        <span class="q-label">External · Positive</span>
+        <span class="q-title">Opportunities</span>
+        <span class="q-desc">Environmental factors working in our favour</span>
+      </div>
+      <div class="q-items">
+        <div class="q-item"><span class="q-num">01</span><div class="q-text"><strong>GOBARdhan &amp; SATAT policy tailwinds</strong><span>India's biogas programmes actively seek local NGO partners — placing the model in direct alignment with current government priorities and offtake guarantees.</span></div></div>
+        <div class="q-item"><span class="q-num">02</span><div class="q-text"><strong>EPR regulation enforcement expanding</strong><span>India's 2022 Extended Producer Responsibility rules are tightening — making NGO registration as a PRO increasingly valuable and revenue-generating.</span></div></div>
+        <div class="q-item"><span class="q-num">03</span><div class="q-text"><strong>Carbon credit market growth</strong><span>VCS and CDM methodologies for landfill diversion are maturing. As India's voluntary carbon market expands, the model is positioned to benefit early.</span></div></div>
+        <div class="q-item"><span class="q-num">04</span><div class="q-text"><strong>CSR mandate under Companies Act</strong><span>Corporate India must spend 2% of net profits on CSR. Waste, education, and livelihood programmes are among the most-funded categories — matching all four phases.</span></div></div>
+        <div class="q-item"><span class="q-num">05</span><div class="q-text"><strong>SWaCH precedent in Pune</strong><span>India's first wholly-owned waste picker cooperative (3,500 workers, 20+ years) provides a proven replication template and natural Phase I partner.</span></div></div>
+        <div class="q-item"><span class="q-num">06</span><div class="q-text"><strong>PM POSHAN school network</strong><span>85,000+ government schools already serving mid-day meals create a nationwide ready network for Phase II biodigester rollout without new institution-building.</span></div></div>
+        <div class="q-item"><span class="q-num">07</span><div class="q-text"><strong>India's SDG &amp; $5T economy alignment</strong><span>SDG 1, 4, 7, and 11 alignment opens doors to multilateral development funding, UN partnerships, and global impact investor interest.</span></div></div>
+      </div>
+    </div>
+
+    <!-- THREATS -->
+    <div class="quadrant threats">
+      <div class="q-header" data-letter="T">
+        <span class="q-label">External · Negative</span>
+        <span class="q-title">Threats</span>
+        <span class="q-desc">External risks we must plan to mitigate</span>
+      </div>
+      <div class="q-items">
+        <div class="q-item"><span class="q-num">01</span><div class="q-text"><strong>Municipal policy instability</strong><span>Tipping fee agreements and collection route permissions depend on local government continuity. Elections or policy changes can disrupt Phase I without warning.</span></div></div>
+        <div class="q-item"><span class="q-num">02</span><div class="q-text"><strong>Informal sector resistance</strong><span>Waste picker formalisation may face resistance from intermediary kabadiwallas who profit from informal recycling chains and hold strong community influence.</span></div></div>
+        <div class="q-item"><span class="q-num">03</span><div class="q-text"><strong>Compost market price volatility</strong><span>Compost and recyclable commodity prices fluctuate with agricultural seasons and global markets — compressing margins when Phase I cash flow is tightest.</span></div></div>
+        <div class="q-item"><span class="q-num">04</span><div class="q-text"><strong>School MoU bureaucratic delays</strong><span>Phase II requires formal agreements with headmasters and district education offices — approvals may face bureaucratic delays of 6–12 months.</span></div></div>
+        <div class="q-item"><span class="q-num">05</span><div class="q-text"><strong>IREDA financing approval risk</strong><span>IREDA loans require technical documentation and viability assessments. Delays or rejection in the first pilot could critically constrain Phase I capital.</span></div></div>
+        <div class="q-item"><span class="q-num">06</span><div class="q-text"><strong>Replication complexity at scale</strong><span>Each new city requires fresh community trust-building, new municipal relationships, and new school partnerships — expansion is inherently slower than it appears on paper.</span></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Strategic Implications -->
+  <div class="strategic-note" id="strat">
+    <h3>Strategic Implications</h3>
+    <div class="strat-grid">
+      <div class="strat-item">
+        <span class="strat-tag so">S–O</span>
+        <span class="strat-text">Use GOBARdhan and SATAT alignment to lock in government offtake agreements before Phase I begins — converting policy tailwind into a guaranteed revenue floor.</span>
+      </div>
+      <div class="strat-item">
+        <span class="strat-tag ow">O–W</span>
+        <span class="strat-text">Apply for IREDA pre-approval and GOBARdhan grants in parallel with Phase I community scoping to reduce the capital gap before operations begin.</span>
+      </div>
+      <div class="strat-item">
+        <span class="strat-tag so">S–O</span>
+        <span class="strat-text">Partner with SWaCH Pune as a Phase I template. Their 20-year track record provides evidence to unlock both CSR and institutional financing simultaneously.</span>
+      </div>
+      <div class="strat-item">
+        <span class="strat-tag wt">W–T</span>
+        <span class="strat-text">Involve existing kabadiwallas as cooperative members with formalised profit-sharing — converting potential opponents into invested stakeholders from day one.</span>
+      </div>
+      <div class="strat-item">
+        <span class="strat-tag st">S–T</span>
+        <span class="strat-text">Build municipal agreements and school MoUs into the pre-launch scoping phase (Month 0–3) so bureaucratic delays don't sit on the critical path.</span>
+      </div>
+      <div class="strat-item">
+        <span class="strat-tag wt">W–T</span>
+        <span class="strat-text">Maintain a 3-month operational reserve fund from Month 6 onwards to buffer compost and recyclable price volatility during the pre-CBG period.</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  ReVitalize Collective &nbsp;·&nbsp; Communication Skills 25-PCP111 &nbsp;·&nbsp; Chandigarh University
+  &nbsp;·&nbsp; <a href="index.html">← Back to full proposal</a>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+
+  document.querySelectorAll('.quadrant, .strategic-note').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
