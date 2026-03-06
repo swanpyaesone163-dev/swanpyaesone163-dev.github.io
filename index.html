@@ -67,6 +67,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);l
 .hero-chips{display:flex;flex-wrap:wrap;gap:8px;}
 .chip{font-family:'DM Mono',monospace;font-size:10.5px;padding:5px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);letter-spacing:.3px;}
 .chip.hl{background:var(--fern);border-color:var(--fern);color:var(--white);}
+.chip{position:relative;cursor:pointer;}
+.chip-bubble{
+  display:none;position:absolute;bottom:calc(100% + 10px);left:50%;
+  transform:translateX(-50%);width:230px;background:var(--ink);color:var(--white);
+  font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.65;font-weight:400;
+  padding:11px 14px;border-radius:8px;z-index:500;pointer-events:none;
+  box-shadow:0 6px 24px rgba(0,0,0,.25);letter-spacing:0;text-transform:none;
+}
+.chip-bubble::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--ink);
+}
+.chip.open .chip-bubble{display:block;}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);margin-top:48px;border-top:1px solid rgba(255,255,255,.1);}
 .hero-stat{background:var(--forest);padding:24px 20px;text-align:center;}
 .hero-stat .val{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--white);display:block;line-height:1;margin-bottom:5px;}
@@ -487,11 +500,14 @@ color: white;
   <div class="hero-kicker">Integrated NGO Concept</div>
   <h1>Waste-to-<em>Development</em>:<br>A Circular Community Model</h1>
   <p class="hero-sub">A phased, self-reinforcing development framework that uses community waste management as the economic foundation for school support, adult education, and livelihood generation — designed for scalability, community ownership, and long-term sustainability without donor dependency.</p>
-  <div class="hero-chips">
-    <span class="chip hl">Circular Economy</span><span class="chip">Waste Processing</span>
-    <span class="chip">Biogas &amp; Compost</span><span class="chip">PM POSHAN Integration</span>
-    <span class="chip">Adult Welfare Access</span><span class="chip">Employment Generation</span>
-  </div>
+<div class="hero-chips">
+  <span class="chip hl">Circular Economy<span class="chip-bubble">Every output becomes an input — waste generates energy, energy funds schools, schools build community, community drives employment back into the system.</span></span>
+  <span class="chip">160K+ Tonnes/Day<span class="chip-bubble">India generates over 160,000 tonnes of municipal solid waste daily. More than 21% goes unprocessed straight to landfills. — CPCB / CSE, 2024</span></span>
+  <span class="chip">95% Segregation Proven<span class="chip-bubble">Pune's SWaCH cooperative — the direct model for Phase I — achieves 95% source segregation across 800,000+ households. Community-led waste management works at scale.</span></span>
+  <span class="chip">Waste → Biogas &amp; Compost<span class="chip-bubble">Organic waste is processed into cooking gas for PM POSHAN schools and nutrient-rich compost for local agriculture — two revenue streams from a single input.</span></span>
+  <span class="chip">Zero-Landfill Cities<span class="chip-bubble">Indore (7× national rank #1) and Ambikapur both achieved zero-landfill status through community-led segregation — proving the model is replicable across city sizes.</span></span>
+  <span class="chip">Employment Generation<span class="chip-bubble">Phase IV closes the loop — waste pickers and community graduates are trained as biogas operators, composting technicians, and plant supervisors via PMKVY certification.</span></span>
+</div>
   <div class="hero-stats">
     <div class="hero-stat"><span class="val">4</span><span class="lbl">Phased Stages</span></div>
     <div class="hero-stat"><span class="val">8+</span><span class="lbl">Revenue Streams</span></div>
@@ -1158,34 +1174,37 @@ color: white;
   }, {passive:true});
 })();
 
-  // ── TIMELINE EXPAND / COLLAPSE ──
-// ── TIMELINE ACCORDION ──
 // ── TIMELINE ACCORDION (OPEN + CLOSE) ──
 (function(){
-
   const rows = document.querySelectorAll('.itl-row');
-
   rows.forEach(function(row){
-
     row.addEventListener('click', function(){
-
       const isOpen = row.classList.contains('open');
-
-      // close all rows
       rows.forEach(function(r){
         r.classList.remove('open');
       });
-
-      // reopen only if it wasn't already open
       if(!isOpen){
         row.classList.add('open');
       }
-
     });
-
   });
-
 })();
+
+  // ── CHIP TOOLTIPS ──
+(function(){
+  document.querySelectorAll('.hero-chips .chip').forEach(function(chip){
+    chip.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = chip.classList.contains('open');
+      document.querySelectorAll('.hero-chips .chip').forEach(function(c){ c.classList.remove('open'); });
+      if(!isOpen) chip.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.hero-chips .chip').forEach(function(c){ c.classList.remove('open'); });
+  });
+})();
+
 </script>
 </body>
 </html>
