@@ -190,22 +190,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);l
   .itl-row{grid-template-columns:44px 1fr;}
 }
 
-/* ── EVIDENCE SECTION ── */
-.ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.ev-panel{background:var(--white);border:1px solid var(--parchment);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
-.ev-panel-head{padding:20px 24px 16px;border-bottom:1px solid var(--parchment);display:flex;align-items:center;gap:14px;background:var(--cream);}
-.ev-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--white);background:var(--forest);padding:5px 10px;border-radius:4px;flex-shrink:0;letter-spacing:1px;}
-.ev-ptitle{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--forest);line-height:1.2;}
-.ev-psub{font-size:11.5px;color:#777;font-family:'DM Mono',monospace;letter-spacing:.2px;margin-top:3px;}
-.ev-slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none;}
-.ev-slider::-webkit-scrollbar{display:none;}
-.ev-card{flex:0 0 100%;scroll-snap-align:start;background:var(--cream);padding:20px 24px;display:flex;flex-direction:column;gap:6px;}
-.ev-val{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--forest);line-height:1;}
-.ev-lbl{font-size:12.5px;color:#444;line-height:1.6;flex:1;}
-.ev-src{font-family:'DM Mono',monospace;font-size:9px;color:var(--fern);letter-spacing:.3px;margin-top:6px;border-top:1px solid var(--parchment);padding-top:8px;}
-.ev-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 14px;}
-.ev-dot{width:6px;height:6px;border-radius:50%;background:var(--parchment);transition:background .2s,transform .2s;cursor:pointer;}
-.ev-dot.active{background:var(--forest);transform:scale(1.3);}
+
   
 /* ── CIRCULAR LOOP ── */
 .circular-loop-wrap{
@@ -219,7 +204,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);l
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   text-align:center;color:var(--white);pointer-events:none;
 }
-  
+
+.inline-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid var(--parchment);}
+.istat-val{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--forest);display:block;line-height:1;margin-bottom:3px;}
+.istat-lbl{font-family:'DM Mono',monospace;font-size:9.5px;color:#777;letter-spacing:.3px;line-height:1.4;}
+.istat-src{font-family:'DM Mono',monospace;font-size:8.5px;color:var(--fern);letter-spacing:.2px;display:block;margin-top:2px;}
+
 .loop-center-label .lc-icon{font-size:28px;line-height:1;}
 .loop-center-label .lc-text{font-family:'DM Mono',monospace;font-size:7.5px;letter-spacing:2.5px;
   color:var(--sage);text-transform:uppercase;margin-top:4px;}
@@ -560,6 +550,11 @@ color: white;
       <p>This project is a Communication Skills submission for Course 25-PCP111 at Chandigarh University, Department of Engineering Foundations-I. Our group believes that poverty cannot be solved by addressing environmental issues, education, and economic opportunity separately, because these challenges are closely interconnected.</p>
       <p>We propose the ReVitalize Collective, an NGO concept designed to integrate into communities and build a self-reinforcing system that addresses multiple causes of poverty in rural and underdeveloped areas. Instead of solving individual problems one by one, the model begins with a visible and practical entry point: waste.</p>
       <p>When unmanaged, waste pollutes water, occupies land, and represents a lost resource. However, when properly managed, it can generate income, support schools, and fund community development. This project demonstrates how a single well-designed intervention can become a catalyst for long-term, community-driven change.</p>
+      <div class="inline-stats">
+  <div><span class="istat-val">160K+</span><span class="istat-lbl">tonnes of MSW generated<br>across India every day</span><span class="istat-src">CPCB, 2024</span></div>
+  <div><span class="istat-val">21%</span><span class="istat-lbl">goes unprocessed —<br>straight to landfill</span><span class="istat-src">CSE, 2024</span></div>
+  <div><span class="istat-val">$13B</span><span class="istat-lbl">estimated annual damage<br>cost to India</span><span class="istat-src">World Bank, 2018</span></div>
+</div>
     </div>
     <div class="about-right">
       <blockquote class="about-quote">"Poverty is not a single problem with a single solution. It is an ecosystem — and only an ecosystem-level response can genuinely change it."</blockquote>
@@ -568,104 +563,6 @@ color: white;
         <div class="about-meta-row"><span class="ml">Department</span><span class="mv">Engineering Foundations-I, Chandigarh University</span></div>
         <div class="about-meta-row"><span class="ml">NGO Concept</span><span class="mv">ReVitalize Collective</span></div>
         <div class="about-meta-row"><span class="ml">Submission Type</span><span class="mv">Written Proposal, Project Website &amp; Live Presentation</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- EVIDENCE BASE -->
-
-<section class="cs" id="evidence">
-  <div class="eyebrow">Research Foundation</div>
-  <h2 class="sec-title">The Evidence Base</h2>
-  <p class="sec-lead">Four categories of evidence underpinning every structural decision in this proposal.</p>
-  <div class="ev-grid">
-
-    <div class="ev-panel">
-      <div class="ev-panel-head">
-        <span class="ev-num">01</span>
-        <div>
-          <div class="ev-ptitle">Scale of the Crisis</div>
-          <div class="ev-psub">Waste generation &amp; the processing gap</div>
-        </div>
-      </div>
-      <div class="ev-slider" id="evSlider0">
-        <div class="ev-card"><div class="ev-val">160K+</div><div class="ev-lbl">tonnes of solid waste generated every single day across India</div><div class="ev-src">CPCB Annual Report; CSE 2024</div></div>
-        <div class="ev-card"><div class="ev-val">21%</div><div class="ev-lbl">of all municipal waste goes unprocessed daily — over 30,000 tonnes straight to landfills</div><div class="ev-src">Centre for Science &amp; Environment, 2024</div></div>
-        <div class="ev-card"><div class="ev-val">165 MT</div><div class="ev-lbl">projected annual urban waste by 2030 — nearly triple today's levels</div><div class="ev-src">MoHUA projection; Mordor Intelligence, 2025</div></div>
-        <div class="ev-card"><div class="ev-val">&lt;20%</div><div class="ev-lbl">of India's plastic waste formally recycled; only 25% of processing plants run at full capacity</div><div class="ev-src">Statista / MoHUA FY 2023; CPCB data</div></div>
-      </div>
-      <div class="ev-dots" id="evDots0"></div>
-    </div>
-
-    <div class="ev-panel">
-      <div class="ev-panel-head">
-        <span class="ev-num">02</span>
-        <div>
-          <div class="ev-ptitle">Community Programmes Work</div>
-          <div class="ev-psub">Outcomes from city-level waste initiatives</div>
-        </div>
-      </div>
-      <div class="ev-slider" id="evSlider1">
-        <div class="ev-card"><div class="ev-val">95%</div><div class="ev-lbl">waste segregation rate achieved in Pune under the SWaCH cooperative model</div><div class="ev-src">Nature Environment &amp; Pollution Technology, 2024</div></div>
-        <div class="ev-card"><div class="ev-val">200 TPD</div><div class="ev-lbl">diverted from landfills daily by SWaCH, now serving 800,000+ Pune households</div><div class="ev-src">Centre for Public Impact / Earth5R, 2024</div></div>
-        <div class="ev-card"><div class="ev-val">100%</div><div class="ev-lbl">of Indore's 1,900 TPD fully processed — certified zero-landfill city since 2017</div><div class="ev-src">Earth5R Waste Management Review, 2025</div></div>
-        <div class="ev-card"><div class="ev-val">50,000 t</div><div class="ev-lbl">annual CO&#8322; savings generated by Pune's SWaCH cooperative model</div><div class="ev-src">Centre for Public Impact, 2024</div></div>
-      </div>
-      <div class="ev-dots" id="evDots1"></div>
-    </div>
-
-    <div class="ev-panel">
-      <div class="ev-panel-head">
-        <span class="ev-num">03</span>
-        <div>
-          <div class="ev-ptitle">Health &amp; Environmental Cost</div>
-          <div class="ev-psub">Consequences of unmanaged waste</div>
-        </div>
-      </div>
-      <div class="ev-slider" id="evSlider2">
-        <div class="ev-card"><div class="ev-val">$13B</div><div class="ev-lbl">estimated annual cost to India from poor waste management — health &amp; environment combined</div><div class="ev-src">World Bank, 2018</div></div>
-        <div class="ev-card"><div class="ev-val">+30%</div><div class="ev-lbl">increase in asthma and bronchitis cases near Delhi's Ghazipur landfill vs. control areas</div><div class="ev-src">Clean &amp; Waste Environment Journal, 2024</div></div>
-        <div class="ev-card"><div class="ev-val">22,000 t</div><div class="ev-lbl">airborne pollutants emitted over Mumbai annually from open burning of MSW and tyres</div><div class="ev-src">Royal Society Open Science / PMC, 2017</div></div>
-        <div class="ev-card"><div class="ev-val">65%</div><div class="ev-lbl">of waste pickers at Chennai's Kodungaiyur landfill report chronic respiratory symptoms</div><div class="ev-src">CWE Journal, 2024</div></div>
-      </div>
-      <div class="ev-dots" id="evDots2"></div>
-    </div>
-
-    <div class="ev-panel">
-      <div class="ev-panel-head">
-        <span class="ev-num">04</span>
-        <div>
-          <div class="ev-ptitle">Awareness Changes Behaviour</div>
-          <div class="ev-psub">Education campaigns &amp; participation evidence</div>
-        </div>
-      </div>
-      <div class="ev-slider" id="evSlider3">
-        <div class="ev-card"><div class="ev-val">43% vs 28%</div><div class="ev-lbl">urban vs. rural household segregation rates — significant room for improvement</div><div class="ev-src">NSSO Survey, Government of India, 2019</div></div>
-        <div class="ev-card"><div class="ev-val">Door-to-door</div><div class="ev-lbl">campaigns rated the single most effective community behaviour-change method, above all media</div><div class="ev-src">Taylor &amp; Francis / Tandfonline, 2024 — Ujjain study</div></div>
-        <div class="ev-card"><div class="ev-val">&#8722;60%</div><div class="ev-lbl">drop in vector-borne disease cases in Indore following sustained IEC awareness campaigns</div><div class="ev-src">Earth5R Indore Case Study, 2024</div></div>
-        <div class="ev-card"><div class="ev-val">Weeks, not days</div><div class="ev-lbl">sustained segregation requires repeated home visits — one-time drives have no lasting effect</div><div class="ev-src">BMC Public Health, 2021 — I-MISS trial, Madhya Pradesh</div></div>
-      </div>
-      <div class="ev-dots" id="evDots3"></div>
-    </div>
-
-  </div>
-</section>
-<section class="cs alt" id="vision">
-  <div class="eyebrow">Core Philosophy</div>
-  <h2 class="sec-title">Vision &amp; Guiding Principles</h2>
-  <p class="sec-lead">Environmental sustainability, education, and economic empowerment are not separate goals — they are interdependent systems that reinforce one another when designed correctly.</p>
-  <div class="about-grid">
-    <div class="about-left">
-      <p>The central design insight of this model is sequencing. Rather than attempting to tackle waste, education, and livelihood simultaneously — which overstretches resources and reduces effectiveness — the model establishes environmental and economic stability first, then uses that stability as a platform for social development.</p>
-      <p>Phase I creates revenue. That revenue funds Phase II. The infrastructure built in Phases I and II creates a context for Phase III. And the awareness and skills developed in Phase III feed participants back into Phase IV — employment within the very waste system that started the entire cycle.</p>
-      <p>This is not a linear project. It is a living system designed to become self-reinforcing, community-owned, and progressively independent of external funding. Each phase strengthens every other phase that came before it.</p>
-    </div>
-    <div class="about-right">
-      <blockquote class="about-quote">"By addressing waste management first, the project establishes a stable economic and environmental base upon which social development can be built — not charity, but infrastructure."</blockquote>
-      <div class="about-meta">
-        <div class="about-meta-row"><span class="ml">Design Principle</span><span class="mv">Sequence before scale</span></div>
-        <div class="about-meta-row"><span class="ml">Philosophy</span><span class="mv">Revenue-linked sustainability</span></div>
-        <div class="about-meta-row"><span class="ml">End Goal</span><span class="mv">Community ownership — zero NGO dependency</span></div>
       </div>
     </div>
   </div>
@@ -986,7 +883,7 @@ color: white;
   <div class="pilot-slider" id="pilotSlider">
     <div class="pilot-card rec">
       <div class="pch"><span class="prb">Top Pick</span><div class="pcity">Pune</div><div class="pstate">Maharashtra</div></div>
-      <div class="pcb">Home to SWaCH, India's first waste picker cooperative (3,500+ workers, 150,000 households). Proven biodigesters, strong NGO networks, and 20+ years of citizen participation evidence.
+      <div class="pcb">Home to SWaCH, India's first waste picker cooperative. Independently verified at <strong>95% source segregation</strong> across 800,000+ households, diverting 200 TPD from landfills and saving ~50,000 t CO2; annually. The direct structural model for Phase I.
         <div class="ptags"><div class="ptl">Key strengths</div><span class="ptag">SWaCH model</span><span class="ptag">Biodigester network</span><span class="ptag">IIT/IIM proximity</span><span class="ptag">NGO ecosystem</span></div>
       </div>
     </div>
@@ -1010,7 +907,7 @@ color: white;
     </div>
     <div class="pilot-card">
       <div class="pch"><div class="pcity">Indore</div><div class="pstate">Madhya Pradesh</div></div>
-      <div class="pcb">India's benchmark cleanest city — best cited as a reference model. Ward dashboards, strict segregation enforcement, and public accountability inspire Phase I governance design.
+      <div class="pcb">Ranked India's cleanest city for <strong>7 consecutive years</strong>. Processes 100% of its 1,900 TPD with zero landfill dependency. Sustained IEC awareness campaigns cut vector-borne disease incidence by <strong>60%</strong> - validating the behaviour-change model in Phase I.
         <div class="ptags"><div class="ptl">Key strengths</div><span class="ptag">National benchmark</span><span class="ptag">Dashboards</span><span class="ptag">100% collection</span></div>
       </div>
     </div>
@@ -1058,6 +955,10 @@ color: white;
     <div class="part-card"><div class="ic">🎪</div><h4>Community Events</h4><p>Monthly clean-up drives, school rallies, and street theatre reinforce the message in a festive format. Children's letter-writing and ward recognition ceremonies build social pride.</p><div class="tac">→ Monthly ward recognition events<br>→ School children as household ambassadors<br>→ Community theatre on waste and health</div></div>
   </div>
   <div class="insight"><div class="ic">💡</div><p><strong>Critical field principle:</strong> Awareness alone does not change waste behaviour. Bin sets must be distributed during the first door-to-door visit so participation has zero additional friction. The Ambikapur SHG model and Haridwar UNICEF pilot both showed sustained segregation only where volunteers returned to the same households repeatedly over weeks — not in communities that received a single campaign event.</p></div>
+  <div class="insight" style="margin-top:12px;">
+  <div class="ic">&#128202;</div>
+  <p>A 2019 NSSO survey found only <strong>43% of urban</strong> and <strong>28% of rural</strong> households currently practise source segregation — confirming significant behavioural headroom. A randomised trial in Madhya Pradesh (BMC Public Health, 2021) found that repeated volunteer home visits produced sustained improvements; a single campaign event did not. Door-to-door contact was independently rated the most effective method in a 2024 Ujjain programme study (Taylor &amp; Francis).</p>
+</div>
 </section>
 
 <section class="cs alt" id="pickers">
@@ -1307,37 +1208,6 @@ color: white;
   document.addEventListener('click', function(){
     document.querySelectorAll('.hero-chips .chip').forEach(function(c){ c.classList.remove('open'); });
   });
-})();
-
-// ── EVIDENCE SLIDERS ──
-(function(){
-  for(var i = 0; i < 4; i++){
-    (function(idx){
-      var slider   = document.getElementById('evSlider' + idx);
-      var dotsWrap = document.getElementById('evDots'   + idx);
-      if(!slider || !dotsWrap) return;
-      var cards = slider.querySelectorAll('.ev-card');
-      var dots  = [];
-      cards.forEach(function(_, j){
-        var d = document.createElement('div');
-        d.className = 'ev-dot' + (j === 0 ? ' active' : '');
-        d.addEventListener('click', function(){
-          slider.scrollTo({left: cards[j].offsetLeft, behavior:'smooth'});
-        });
-        dotsWrap.appendChild(d);
-        dots.push(d);
-      });
-      slider.addEventListener('scroll', function(){
-        var mid = slider.scrollLeft + slider.offsetWidth / 2;
-        var closest = 0, minDist = Infinity;
-        cards.forEach(function(c, j){
-          var dist = Math.abs((c.offsetLeft + c.offsetWidth / 2) - mid);
-          if(dist < minDist){ minDist = dist; closest = j; }
-        });
-        dots.forEach(function(d, j){ d.classList.toggle('active', j === closest); });
-      }, {passive:true});
-    })(i);
-  }
 })();
 
     // touch swipe
