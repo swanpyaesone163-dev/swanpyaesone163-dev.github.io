@@ -1211,18 +1211,6 @@ color: white;
   });
 })();
 
-    // touch swipe
-    var startY = 0;
-    var vp = panel.querySelector('.ev-slider-viewport');
-    vp.addEventListener('touchstart', function(e){ startY = e.touches[0].clientY; }, {passive:true});
-    vp.addEventListener('touchend',   function(e){
-      var dy = startY - e.changedTouches[0].clientY;
-      if(Math.abs(dy) > 30) go(cur + (dy > 0 ? 1 : -1));
-    }, {passive:true});
-
-    go(0);
-  });
-})();
   
 </script>
 </body>
